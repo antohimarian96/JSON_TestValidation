@@ -66,19 +66,21 @@ namespace JSON_TextValidation
 
         private static bool CheckChar(char character)
         {
-           switch(character)
+            string result = Convert.ToString(character);
+            result = result.ToUpper();
+           switch(result)
             {
-                case 'A':
+                case "A":
                     return true;
-                case 'B':
+                case "B":
                     return true;
-                case 'C':
+                case "C":
                     return true;
-                case 'D':
+                case "D":
                     return true;
-                case 'E':
+                case "E":
                     return true;
-                case 'F':
+                case "F":
                     return true;
                 default:
                     return false;
