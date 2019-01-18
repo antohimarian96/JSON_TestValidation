@@ -39,7 +39,7 @@ namespace JSON_TextValidation
                                 index = true;
                             if (text[i + 1] == 'u')
                             {
-                                index = CheckDigits(text);
+                                index = CheckDigits(text,i+1);
                                 count = 1;
                             }
                         }
@@ -54,18 +54,35 @@ namespace JSON_TextValidation
             return false;
         }
 
-        private static bool CheckDigits(string text)
+        private static bool CheckDigits(string text, int index)
         {
-            for (int i = 0; i < text.Length - 1; i++) 
-                if(text[i] == 'u')
-                {
-                    if ((text.Length - 2) - i < 4)
-                        return false;
-                    for (int j = i+1; j <= i + 4; j++)
-                        if (text[j] < '0' || text[j] > '9')
-                            return false;
-                }
+            if ((text.Length - 2) - index < 4)
+                return false;
+            for (int i = index + 1; i <= index + 4; i++)
+                if ((text[i] < '0' || text[i] > '9' )&& !CheckChar(text[i]))
+                    return false;
             return true;
+        }
+
+        private static bool CheckChar(char character)
+        {
+           switch(character)
+            {
+                case 'A':
+                    return true;
+                case 'B':
+                    return true;
+                case 'C':
+                    return true;
+                case 'D':
+                    return true;
+                case 'E':
+                    return true;
+                case 'F':
+                    return true;
+                default:
+                    return false;
+            }
         }
     }
 }
